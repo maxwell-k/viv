@@ -31,6 +31,7 @@ from argparse import SUPPRESS
 from collections.abc import Generator
 from collections.abc import Sequence
 from contextlib import contextmanager
+from contextlib import nullcontext
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
@@ -749,14 +750,11 @@ def subprocess_run(
     log.debug("executing subcmd:\n  " + " ".join(command))
 
     if spinmsg and not verbose:
-        with Spinner(spinmsg):
-            p = subprocess.run(
-                command,
-                stdout=None if verbose else subprocess.PIPE,
-                stderr=None if verbose else subprocess.STDOUT,
-                universal_newlines=True,
-            )
+        cm = Spinner(spinmsg)
     else:
+        cm = nullcontext()
+
+    with cm:
         p = subprocess.run(
             command,
             stdout=None if verbose else subprocess.PIPE,
