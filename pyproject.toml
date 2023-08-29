@@ -24,6 +24,7 @@ version = { source = "scm" }
 
 [tool.pdm.dev-dependencies]
 dev = [
+    "reorder-python-imports",
     "pre-commit>=3",
     "mypy>=0.991",
 ]

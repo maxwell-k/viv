@@ -5,7 +5,6 @@
     OR
   __import__("viv").use("requests", "bs4")
 """
-
 from __future__ import annotations
 
 import hashlib
@@ -22,35 +21,32 @@ import tempfile
 import threading
 import time
 import venv
-from argparse import (
-    SUPPRESS,
-    Action,
-    HelpFormatter,
-    Namespace,
-    RawDescriptionHelpFormatter,
-    _SubParsersAction,
-)
+from argparse import _SubParsersAction
+from argparse import Action
 from argparse import ArgumentParser as StdArgParser
+from argparse import HelpFormatter
+from argparse import Namespace
+from argparse import RawDescriptionHelpFormatter
+from argparse import SUPPRESS
+from collections.abc import Generator
+from collections.abc import Sequence
 from contextlib import contextmanager
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
-from textwrap import dedent, fill
+from textwrap import dedent
+from textwrap import fill
 from types import TracebackType
-from typing import (
-    Any,
-    Dict,
-    Generator,
-    List,
-    NoReturn,
-    Optional,
-    Sequence,
-    Set,
-    TextIO,
-    Tuple,
-    Type,
-    Union,
-)
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import NoReturn
+from typing import Optional
+from typing import Set
+from typing import TextIO
+from typing import Tuple
+from typing import Type
+from typing import Union
 
 __version__ = "2023.1001-dev"
 
