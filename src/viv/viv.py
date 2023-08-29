@@ -1199,7 +1199,7 @@ def make_executable(path: Path) -> None:
 def uses_viv(txt: str) -> bool:
     return bool(
         re.search(
-            """
+            r"""
             ^(?!\#)\s*
             (?:__import__\(\s*["']viv["']\s*\))
             |
