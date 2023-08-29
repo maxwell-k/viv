@@ -999,7 +999,7 @@ class ViVenv:
         size = float(
             sum(p.stat().st_size for p in Path(self.path).rglob("*") if p.is_file())
         )
-        for unit in ("B", "K", "M", "G", "T"):
+        for unit in ("", "K", "M", "G", "T"):
             if size < 1024:
                 break
             size /= 1024
