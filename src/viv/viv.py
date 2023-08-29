@@ -1794,7 +1794,7 @@ class Viv:
         run an app/script with an on-demand venv
 
         examples:
-          viv r pycowsay -- "viv isn't venv\!"
+          viv r pycowsay -- "viv isn't venv\\!"
           viv r rich -b python -- -m rich
           viv r -s <remote python script>
         """
