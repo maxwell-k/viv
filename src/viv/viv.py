@@ -619,6 +619,7 @@ class CustomHelpFormatter(RawDescriptionHelpFormatter, HelpFormatter):
         action_header_len = len(a.escape(action_header))
 
         # no help; start on same line and add a final newline
+        indent_first = 0
         if not action.help:
             action_header = "%*s%s\n" % (self._current_indent, "", action_header)
         # short action name; start on the same line and pad two spaces
@@ -628,7 +629,6 @@ class CustomHelpFormatter(RawDescriptionHelpFormatter, HelpFormatter):
                 f"{' '*self._current_indent}{action_header}"
                 f"{' '*(action_width+2 - action_header_len)}"
             )
-            indent_first = 0
 
         # long action name; start on the next line
         else:
@@ -999,6 +999,7 @@ class ViVenv:
         size = float(
             sum(p.stat().st_size for p in Path(self.path).rglob("*") if p.is_file())
         )
+        unit = ""
         for unit in ("", "K", "M", "G", "T"):
             if size < 1024:
                 break
@@ -1713,9 +1714,8 @@ class Viv:
     def _update_cache(env: os._Environ[str], keep: bool, tmpdir: str) -> None:
         run_mode = Env().viv_run_mode
         if not keep:
-            if run_mode == "ephemeral":
-                new_cache = tmpdir
-            elif run_mode == "semi-ephemeral":
+            new_cache = tmpdir  # default for ephemeral
+            if run_mode == "semi-ephemeral":
                 new_cache = str(
                     Path(tempfile.gettempdir()) / "viv-ephemeral-cache" / "venvs"
                 )
