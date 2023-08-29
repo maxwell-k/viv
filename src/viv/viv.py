@@ -758,7 +758,7 @@ def subprocess_run(
         p = subprocess.run(
             command,
             stdout=None if verbose else subprocess.PIPE,
-            stderr=None if verbose else subprocess.STDOUT,
+            stderr=None if verbose else subprocess.PIPE,
             universal_newlines=True,
         )
 
